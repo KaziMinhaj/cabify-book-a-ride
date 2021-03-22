@@ -20,11 +20,12 @@ const EachTransport = () => {
     })
     const handleSubmit = (event) => {
         event.preventDefault();
-        location.isSubmitted = !location.isSubmitted;
+        const newInfo = { ...location }
+        newInfo.isSubmitted = true;
+        setLocation(newInfo)
     }
     const handleBlur = (event) => {
         location[event.target.name] = event.target.value
-        console.log(location);
     }
     return (
         <div className="container">
@@ -37,7 +38,7 @@ const EachTransport = () => {
                 })
             }
             <div className="row">
-                <div className="col-sm search-box">
+                <div style={location.isSubmitted ? { display: "none" } : { display: "block" }} className="col-sm search-box">
                     <form action="" onSubmit={handleSubmit}>
                         <label htmlFor="">Pick form</label>
                         <br />
@@ -53,6 +54,9 @@ const EachTransport = () => {
                         <br />
                         <input type="submit" className="btn btn-warning searchBtn" />
                     </form>
+                </div>
+                <div style={location.isSubmitted ? { display: "block" } : { display: "none" }} className="col-sm search-box">
+                    <h1>search item</h1>
                 </div>
                 <div className="col-sm map">
                     <img src={map} alt="" />
