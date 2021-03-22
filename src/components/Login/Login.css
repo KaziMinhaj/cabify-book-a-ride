@@ -1,9 +1,22 @@
 .form-container {
+  background-image: url("../../images/Bgcrop.png");
+  height: 695px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
   text-align: center;
-  margin: 40px;
   padding: 50px;
   background-color: aliceblue;
 }
 .signinoutbtn {
   margin: 10px;
+}
+.form {
+  padding: 30px;
+  background-color: rgba(82, 168, 189, 0.377);
+  height: 400px;
+  /* width: 400px; */
+  /* right: 0;
+  position: absolute;
+  margin-right: 70px; */
 }

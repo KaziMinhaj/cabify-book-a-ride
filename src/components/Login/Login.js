@@ -142,7 +142,7 @@ const Login = () => {
 
     return (
         <div className="form-container">
-            <div>
+            <div className="form card" >
                 <form action="" onSubmit={handleSubmit}>
                     <h3>Please sign in to Cabify</h3>
                     <br />
@@ -158,13 +158,13 @@ const Login = () => {
                     <input type="checkbox" name="newUser" onChange={() => setNewUser(!newUser)} />
                     <label htmlFor="newUser">signup</label>
                 </form>
-            </div>
-            <h5>or</h5>
-            <div>
-                <button className="btn btn-success" onClick={handleGoogleSignIn}>Google Sign in</button>
-            </div>
-            <h5 style={user.error ? { color: 'green' } : { color: 'green' }} >{user.error ? user.error : user.successText} </h5>
 
+                <h5>or</h5>
+                <div>
+                    <button className="btn btn-success" onClick={handleGoogleSignIn}>Google Sign in</button>
+                </div>
+                <h5 style={user.error ? { color: 'green' } : { color: 'green' }} >{user.error ? user.error : user.successText} </h5>
+            </div>
         </div>
     );
 };

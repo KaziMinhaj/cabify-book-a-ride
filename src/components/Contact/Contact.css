@@ -1,13 +1,7 @@
-.home-container {
+.contact {
   background-image: url("../../images/Bg.png");
   height: 695px; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
-  padding: 100px;
-}
-.card-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
