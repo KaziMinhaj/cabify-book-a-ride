@@ -7,6 +7,8 @@ import Destination from "./components/Destination/Destination";
 import Contact from "./components/Contact/Contact";
 import Home from "./components/Home/Home";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import EachTransport from "./components/EachTransport/EachTransport";
+
 
 export const UserContext = createContext()
 
@@ -20,7 +22,7 @@ function App() {
           <Route exact path="/">
             <Home></Home>
           </Route>
-          <Route path="/home">
+          <Route exact path="/home">
             <Home></Home>
           </Route>
           <PrivateRoute path="/destination">
@@ -34,6 +36,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login></Login>
+          </Route>
+          <Route path="/home/:id">
+            <EachTransport></EachTransport>
           </Route>
         </Switch>
       </Router>
