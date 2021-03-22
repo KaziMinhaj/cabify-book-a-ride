@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import { firebaseConfig } from './firebase.config';
 import './Login.css'
+import { UserContext } from '../../App';
+import { useHistory, useLocation } from 'react-router';
 
 const Login = () => {
+    //for redirecting
+    let history = useHistory();
+    let location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
+
+    //context api
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
     //states
     const [newUser, setNewUser] = useState(false)
     const [user, setUser] = useState({
@@ -31,8 +41,11 @@ const Login = () => {
         firebase.auth()
             .signInWithPopup(provider)
             .then((result) => {
-                var user = result.user;
-                console.log(user);
+                var { displayName } = result.user;
+                const signedUser = { name: displayName }
+                // console.log(user);
+                setLoggedInUser(signedUser);
+                history.replace(from);
             }).catch((error) => {
                 var errorMessage = error.message;
                 console.log(errorMessage);
@@ -65,6 +78,10 @@ const Login = () => {
                     newUserInfo.error = '';
                     newUserInfo.success = true;
                     setUser(newUserInfo);
+                    const globalnewUserInfo = { ...user }
+                    console.log("global user: ", globalnewUserInfo);
+                    setLoggedInUser(globalnewUserInfo);
+                    history.replace(from);
 
                 })
                 .catch((error) => {
@@ -72,6 +89,7 @@ const Login = () => {
                     newUserInfo.error = error.message;
                     newUserInfo.success = false;
                     setUser(newUserInfo)
+                    setLoggedInUser(newUserInfo)
                 });
         }
     }
@@ -134,8 +152,6 @@ const Login = () => {
             <div>
                 <button className="btn btn-success" onClick={handleGoogleSignIn}>Google Sign in</button>
             </div>
-            {console.log('user', user, 'newUser', newUser)
-            }
         </div>
     );
 };

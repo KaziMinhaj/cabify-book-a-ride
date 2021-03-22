@@ -1,9 +1,17 @@
 import React from 'react';
+import './Home.css'
+import { allData } from '../FakeData/FakeData'
+import Transport from '../Transports/Transport';
 
 const Home = () => {
     return (
-        <div>
-            <h1>Home page</h1>
+        <div className="home-container">
+            <div className="card-container">
+                {
+                    allData.map(data => <Transport data={data} ></Transport>)
+                }
+            </div>
+
         </div>
     );
 };
