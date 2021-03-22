@@ -14,9 +14,17 @@
 .form {
   padding: 30px;
   background-color: rgba(82, 168, 189, 0.377);
-  height: 400px;
+  height: 500px;
   /* width: 400px; */
   /* right: 0;
   position: absolute;
   margin-right: 70px; */
+}
+.inputField {
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  width: 250px;
+  height: 35px;
+  padding: 5px;
 }

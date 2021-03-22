@@ -146,13 +146,13 @@ const Login = () => {
                 <form action="" onSubmit={handleSubmit}>
                     <h3>Please sign in to Cabify</h3>
                     <br />
-                    {newUser && <input type="text" name="name" placeholder="name" onBlur={handleBlur} />}
+                    {newUser && <input className="inputField" type="text" name="name" placeholder="name" onBlur={handleBlur} />}
                     <br />
-                    <input type="text" name="email" placeholder="email" onBlur={handleBlur} required />
+                    <input className="inputField" type="text" name="email" placeholder="email" onBlur={handleBlur} required />
                     <br />
-                    <input type="password" name="password" placeholder="password" onBlur={handleBlur} required />
+                    <input className="inputField" type="password" name="password" placeholder="password" onBlur={handleBlur} required />
                     <br />
-                    {newUser && <input type="password" name="confirmPassword" placeholder="confirm password" onBlur={handleBlur} />}
+                    {newUser && <input className="inputField" type="password" name="confirmPassword" placeholder="confirm password" onBlur={handleBlur} />}
                     <br />
                     <input className="btn btn-primary signinoutbtn" type="submit" value={newUser ? 'sign up' : 'sign in'} />
                     <input type="checkbox" name="newUser" onChange={() => setNewUser(!newUser)} />

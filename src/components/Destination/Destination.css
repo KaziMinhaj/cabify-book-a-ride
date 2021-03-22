@@ -1,0 +1,8 @@
+.destinaiton {
+  background-image: url("../../images/Bgcrop.png");
+  height: 695px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  text-align: center;
+}
