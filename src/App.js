@@ -7,6 +7,7 @@ import Destination from "./components/Destination/Destination";
 import Contact from "./components/Contact/Contact";
 import Home from "./components/Home/Home";
 
+
 function App() {
   return (
     <Router>
