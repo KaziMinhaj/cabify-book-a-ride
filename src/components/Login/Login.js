@@ -21,10 +21,12 @@ const Login = () => {
         isSignedIn: false,
         name: '',
         email: '',
-        photo: '',
         password: '',
         error: '',
-        success: false
+        success: false,
+        confirmPassword: '',
+        isPassConfirmed: false,
+        successText: ''
     })
 
     // Initialize Firebase
@@ -52,17 +54,26 @@ const Login = () => {
             });
     }
 
-    //email and pass sign up and sign in
     const handleSubmit = (event) => {
         event.preventDefault()
         if (newUser && user.email && user.password) {
             firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
                 .then((response) => {
                     const newUserInfo = { ...user };
-                    newUserInfo.error = '';
-                    newUserInfo.success = true;
-                    setUser(newUserInfo)
-                    updateUserName(user.name)
+                    newUserInfo.password === newUserInfo.confirmPassword ? newUserInfo.isPassConfirmed = true : newUserInfo.isPassConfirmed = false
+                    if (newUserInfo.isPassConfirmed) {
+                        newUserInfo.error = '';
+                        newUserInfo.success = true;
+                        newUserInfo.successText = "Congratulations! Your account has been created. Please LOGIN"
+                        setUser(newUserInfo)
+                        updateUserName(user.name);
+                    }
+                    else {
+                        newUserInfo.error = "Password is not matching ! Please try again";
+                        newUserInfo.success = false;
+                        setUser(newUserInfo)
+
+                    }
                 })
                 .catch((error) => {
                     const newUserInfo = { ...user };
@@ -79,7 +90,6 @@ const Login = () => {
                     newUserInfo.success = true;
                     setUser(newUserInfo);
                     const globalnewUserInfo = { ...user }
-                    console.log("global user: ", globalnewUserInfo);
                     setLoggedInUser(globalnewUserInfo);
                     history.replace(from);
 
@@ -100,7 +110,7 @@ const Login = () => {
         if (event.target.name === "email") {
             isFormValid = /\S+@\S+\.\S+/.test(event.target.value)
         }
-        if (event.target.name === "password") {
+        if (event.target.name === "password" || event.target.name === "confirmPassword") {
             const isPassValid = event.target.value.length > 6
             const passContainNumber = /\d{1}/.test(event.target.value)
             isFormValid = (isPassValid && passContainNumber);
@@ -142,7 +152,8 @@ const Login = () => {
                     <br />
                     <input type="password" name="password" placeholder="password" onBlur={handleBlur} required />
                     <br />
-
+                    {newUser && <input type="password" name="confirmPassword" placeholder="confirm password" onBlur={handleBlur} />}
+                    <br />
                     <input className="btn btn-primary signinoutbtn" type="submit" value={newUser ? 'sign up' : 'sign in'} />
                     <input type="checkbox" name="newUser" onChange={() => setNewUser(!newUser)} />
                     <label htmlFor="newUser">signup</label>
@@ -152,6 +163,8 @@ const Login = () => {
             <div>
                 <button className="btn btn-success" onClick={handleGoogleSignIn}>Google Sign in</button>
             </div>
+            <h5 style={user.error ? { color: 'green' } : { color: 'green' }} >{user.error ? user.error : user.successText} </h5>
+
         </div>
     );
 };
