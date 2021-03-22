@@ -37,9 +37,9 @@ function App() {
           <Route path="/login">
             <Login></Login>
           </Route>
-          <Route path="/home/:id">
+          <PrivateRoute path="/home/:id">
             <EachTransport></EachTransport>
-          </Route>
+          </PrivateRoute>
         </Switch>
       </Router>
     </UserContext.Provider>

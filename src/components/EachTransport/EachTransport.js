@@ -3,7 +3,8 @@ import { useParams } from 'react-router';
 import { allData } from '../FakeData/FakeData'
 import './EachTransport.css'
 import map from '../../images/Map.png'
-import SearchResult from './SearchResult';
+import icon from '../../images/peopleicon.png'
+
 
 const EachTransport = () => {
     const { id } = useParams();
@@ -56,7 +57,67 @@ const EachTransport = () => {
                     </form>
                 </div>
                 <div style={location.isSubmitted ? { display: "block" } : { display: "none" }} className="col-sm search-box">
-                    <h1>search item</h1>
+                    <div className="toFrom card shadow bg-warning">
+                        <h5>From : {location.to}</h5>
+                        <hr />
+                        <h5>To : {location.from}</h5>
+                    </div>
+                    <div className="result shadow">
+                        <div className="eachResult">
+                            <img className="searched-img" src={state.img} alt="" />
+                        </div>
+                        <div className="eachResult">
+                            <h5>{state.type}</h5>
+                        </div>
+                        <div className="eachResult">
+                            <img className="searched-img" src={icon} alt="" />
+                        </div>
+                        <div className="eachResult ">
+                            <h5>$67</h5>
+                        </div>
+                    </div>
+                    <div className="result shadow">
+                        <div className="eachResult">
+                            <img className="searched-img" src={state.img} alt="" />
+                        </div>
+                        <div className="eachResult">
+                            <h5>{state.type}</h5>
+                        </div>
+                        <div className="eachResult">
+                            <img className="searched-img" src={icon} alt="" />
+                        </div>
+                        <div className="eachResult ">
+                            <h5>$67</h5>
+                        </div>
+                    </div>
+                    <div className="result shadow">
+                        <div className="eachResult">
+                            <img className="searched-img" src={state.img} alt="" />
+                        </div>
+                        <div className="eachResult">
+                            <h5>{state.type}</h5>
+                        </div>
+                        <div className="eachResult">
+                            <img className="searched-img" src={icon} alt="" />
+                        </div>
+                        <div className="eachResult ">
+                            <h5>$67</h5>
+                        </div>
+                    </div>
+                    <div className="result shadow">
+                        <div className="eachResult">
+                            <img className="searched-img" src={state.img} alt="" />
+                        </div>
+                        <div className="eachResult">
+                            <h5>{state.type}</h5>
+                        </div>
+                        <div className="eachResult">
+                            <img className="searched-img" src={icon} alt="" />
+                        </div>
+                        <div className="eachResult ">
+                            <h5>$67</h5>
+                        </div>
+                    </div>
                 </div>
                 <div className="col-sm map">
                     <img src={map} alt="" />

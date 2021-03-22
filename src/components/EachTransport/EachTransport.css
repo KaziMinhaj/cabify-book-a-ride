@@ -12,3 +12,17 @@
 .map {
   margin: 40px;
 }
+.searched-img {
+  width: 30px;
+}
+.result {
+  margin: 10px;
+  display: flex;
+  background-color: white;
+}
+.eachResult {
+  padding: 10px;
+}
+.toFrom {
+  padding: 10px;
+}
